@@ -16,8 +16,8 @@ playRound(humanSelection, computerSelection);
 
 function getComputerChoice(){
     
-    let value = Math.floor(Math.random() * array.length);
-    return value;
+    let choice = Math.floor(Math.random() * array.length);
+    return choice;
 }
 // console.log(getComputerChoice());
 
