@@ -1,23 +1,20 @@
-let array = [
-    'rock',
-    'paper',
-    'scissors'
+let arr = [
+    'Rock',
+    'Paper',
+    'Scissors'
 ];
 
-let humanScore = 0;
-let computerScore = 0;
+function random(mn, mx){
+    return Math.random() * (mx - mn) + mn;
+}
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
 
 
 
 function getComputerChoice(){
 
     //TODO: Get it to pull string types instead of index values
-    let computerSelection = Math.floor(Math.random() * array.length);
+    let computerSelection = arr[Math.floor(randon(1, 4)) - 1];
     return computerSelection;
 
 }
@@ -32,6 +29,9 @@ function getHumanChoice() {
 
 function playRound(humanSelection, computerSelection){
 
+    let humanScore = 0;
+    let computerScore = 0;
+
     let playGame = prompt("Would you like to play the game? Y/N");
 
 
@@ -45,12 +45,16 @@ function playRound(humanSelection, computerSelection){
             || humanSelection == 'scissors' && computerSelection == 'paper') { 
             
                 // Display the human won
-                // Increment humanScore
-                // Play again or exit
+                alert("You won this round!");
 
-                if (playGame != 'Y' || playGame != 'y'){
-                    //exit game
-                }
+                // Increment humanScore
+                humanScore++;
+
+                // Play again
+                playRound(); 
+
+               
+                
         }
         else if (computerSelection == 'rock' && humanSelection == 'scissors'
             || computerSelection == 'paper' && humanSelection == 'rock'
@@ -69,3 +73,8 @@ function playRound(humanSelection, computerSelection){
     
     }
 }
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
