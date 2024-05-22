@@ -16,9 +16,10 @@ playRound(humanSelection, computerSelection);
 
 function getComputerChoice(){
 
+    //TODO: Get it to pull string types instead of index values
     let computerSelection = Math.floor(Math.random() * array.length);
     return computerSelection;
-    
+
 }
 // console.log(getComputerChoice());
 
@@ -33,10 +34,23 @@ function playRound(humanSelection, computerSelection){
 
     let playGame = prompt("Would you like to play the game? Y/N");
 
+
     while (playGame == 'Y' || playGame == 'y'){
-        if (humanSelection == 'rock' && computerSelection)
+
+        getHumanChoice();
+        getComputerChoice();
+
+        if  (humanSelection == 'rock' && computerSelection == 'scissors'
+            || humanSelection == 'paper' && computerSelection == 'rock'
+            || humanSelection == 'scissors' && computerSelection == 'paper') { 
+            
+                // Display the human won
+                // Increment humanScore
+                // Play again or exit
+        }
+        
+
+        
+    
     }
 }
-
-
-
