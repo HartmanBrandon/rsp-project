@@ -4,7 +4,8 @@ let array = [
     'scissors'
 ];
 
-let humanScore;
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice(){
     
@@ -14,5 +15,10 @@ function getComputerChoice(){
 // console.log(getComputerChoice());
 
 function getHumanChoice() {
-    let choice = prompt("Rock paper or scissors? ");
+    let choice = prompt("Rock paper or scissors? ").toLowerCase();
+    return choice;
+}
+
+function playRound(humanChoice, computerChoice){
+
 }
