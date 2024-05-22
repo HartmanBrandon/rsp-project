@@ -15,19 +15,27 @@ playRound(humanSelection, computerSelection);
 
 
 function getComputerChoice(){
+
+    let computerSelection = Math.floor(Math.random() * array.length);
+    return computerSelection;
     
-    let choice = Math.floor(Math.random() * array.length);
-    return choice;
 }
 // console.log(getComputerChoice());
 
 function getHumanChoice() {
-    let choice = prompt("Rock paper or scissors? ").toLowerCase();
-    return choice;
+
+    let humanSelection = prompt("Rock paper or scissors? ").toLowerCase();
+    return humanSelection;
+
 }
 
-function playRound(humanChoice, computerChoice){
+function playRound(humanSelection, computerSelection){
 
+    let playGame = prompt("Would you like to play the game? Y/N");
+
+    while (playGame == 'Y' || playGame == 'y'){
+        if (humanSelection == 'rock' && computerSelection)
+    }
 }
 
 
