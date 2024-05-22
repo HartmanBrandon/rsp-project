@@ -47,8 +47,23 @@ function playRound(humanSelection, computerSelection){
                 // Display the human won
                 // Increment humanScore
                 // Play again or exit
+
+                if (playGame != 'Y' || playGame != 'y'){
+                    //exit game
+                }
         }
-        
+        else if (computerSelection == 'rock' && humanSelection == 'scissors'
+            || computerSelection == 'paper' && humanSelection == 'rock'
+            || computerSelection == 'scissors' && humanSelection == 'paper') {
+                
+                // Display the computer wom
+                // Increment computerScore
+                // Play again or exit
+            }
+        else {
+            alert("Final score was Player: " +  humanSelection + " and computer: " + computerSelection);
+            return;
+        }
 
         
     
