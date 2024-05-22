@@ -7,6 +7,13 @@ let array = [
 let humanScore = 0;
 let computerScore = 0;
 
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+
+
 function getComputerChoice(){
     
     let value = Math.floor(Math.random() * array.length);
@@ -22,3 +29,6 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice){
 
 }
+
+
+
