@@ -6,6 +6,9 @@ let COMPUTERSELECTION = "";
 
 playRound();
 
+// I only win
+// Typing rock into Y or y
+
 function random(mn, mx) {
   return Math.random() * (mx - mn) + mn;
 }
@@ -21,17 +24,14 @@ function getHumanChoice() {
 }
 
 function playRound() {
-  let playGame = prompt("Would you like to play the game? Y/N");
-  HUMANSELECTION = getHumanChoice();
-  COMPUTERSELECTION = getComputerChoice();
-
-  while (playGame == "Y" || playGame == "y") {
+  let playGame = prompt("Would you like to play the game? Y/N").toLowerCase();
+  while (playGame == "y") {
+    HUMANSELECTION = getHumanChoice();
+    COMPUTERSELECTION = getComputerChoice();
     if (
-      [
-        (HUMANSELECTION == "rock" && COMPUTERSELECTION == "scissors") ||
-          (HUMANSELECTION == "paper" && COMPUTERSELECTION == "rock") ||
-          (HUMANSELECTION == "scissors" && COMPUTERSELECTION == "paper"),
-      ]
+      (HUMANSELECTION == "rock" && COMPUTERSELECTION == "scissors") ||
+      (HUMANSELECTION == "paper" && COMPUTERSELECTION == "rock") ||
+      (HUMANSELECTION == "scissors" && COMPUTERSELECTION == "paper")
     ) {
       // Display the human won
       alert("You won this round! The score is being incremented.");
@@ -46,13 +46,11 @@ function playRound() {
       );
 
       // Play again
-      playRound();
+      // playRound();
     } else if (
-      [
-        (COMPUTERSELECTION == "rock" && HUMANSELECTION == "scissors") ||
-          (COMPUTERSELECTION == "paper" && HUMANSELECTION == "rock") ||
-          (COMPUTERSELECTION == "scissors" && HUMANSELECTION == "paper"),
-      ]
+      (COMPUTERSELECTION == "rock" && HUMANSELECTION == "scissors") ||
+      (COMPUTERSELECTION == "paper" && HUMANSELECTION == "rock") ||
+      (COMPUTERSELECTION == "scissors" && HUMANSELECTION == "paper")
     ) {
       // Display the computer won
       alert("The computer won this round! The score is being incremented.");
@@ -68,13 +66,11 @@ function playRound() {
 
       // Play again or exit
 
-      playRound();
+      // playRound();
     } else if (
-      [
-        (HUMANSELECTION == "rock" && COMPUTERSELECTION == "rock") ||
-          (HUMANSELECTION == "paper" && COMPUTERSELECTION == "paper") ||
-          (HUMANSELECTION == "scissors" && COMPUTERSELECTION == "scissors"),
-      ]
+      (HUMANSELECTION == "rock" && COMPUTERSELECTION == "rock") ||
+      (HUMANSELECTION == "paper" && COMPUTERSELECTION == "paper") ||
+      (HUMANSELECTION == "scissors" && COMPUTERSELECTION == "scissors")
     ) {
       alert("This round was a TIE.");
       alert(
@@ -86,7 +82,7 @@ function playRound() {
 
       // Play again or exit
 
-      playRound();
+      // playRound();
     } else {
       alert(
         "Final score was Player: " +
