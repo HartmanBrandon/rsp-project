@@ -1,20 +1,19 @@
-playRound();
-
 let arr = ["Rock", "Paper", "Scissors"];
-const HUMANSELECTION = getHumanChoice();
-const COMPUTERSELECTION = getComputerChoice();
+let humanScore = 0;
+let computerScore = 0;
+let HUMANSELECTION = "";
+let COMPUTERSELECTION = "";
+
+playRound();
 
 function random(mn, mx) {
   return Math.random() * (mx - mn) + mn;
 }
 
 function getComputerChoice() {
-  // This has been tested. It pulls the string name instead of index value.
   let computerSelection = arr[Math.floor(random(1, 4)) - 1];
   return computerSelection;
 }
-
-// This function has been tested and works
 
 function getHumanChoice() {
   let humanSelection = prompt("Rock paper or scissors? ").toLowerCase();
@@ -22,53 +21,68 @@ function getHumanChoice() {
 }
 
 function playRound() {
-  let humanScore = 0;
-  let computerScore = 0;
-
   let playGame = prompt("Would you like to play the game? Y/N");
+  HUMANSELECTION = getHumanChoice();
+  COMPUTERSELECTION = getComputerChoice();
 
-  getHumanChoice();
-  alert("The player picked " + humanSelection);
-
-  getComputerChoice();
-  alert("The computer picked " + computerSelection);
-
-  
   while (playGame == "Y" || playGame == "y") {
     if (
-      (humanSelection == "rock" && computerSelection == "scissors") ||
-      (humanSelection == "paper" && computerSelection == "rock") ||
-      (humanSelection == "scissors" && computerSelection == "paper")
+      [
+        (HUMANSELECTION == "rock" && COMPUTERSELECTION == "scissors") ||
+          (HUMANSELECTION == "paper" && COMPUTERSELECTION == "rock") ||
+          (HUMANSELECTION == "scissors" && COMPUTERSELECTION == "paper"),
+      ]
     ) {
       // Display the human won
       alert("You won this round! The score is being incremented.");
-
       // Increment humanScore
       humanScore++;
 
-      // Play again
+      alert(
+        "The score is currently... Player: " +
+          humanScore +
+          " and Computer: " +
+          computerScore
+      );
 
+      // Play again
       playRound();
     } else if (
-      (computerSelection == "rock" && humanSelection == "scissors") ||
-      (computerSelection == "paper" && humanSelection == "rock") ||
-      (computerSelection == "scissors" && humanSelection == "paper")
+      [
+        (COMPUTERSELECTION == "rock" && HUMANSELECTION == "scissors") ||
+          (COMPUTERSELECTION == "paper" && HUMANSELECTION == "rock") ||
+          (COMPUTERSELECTION == "scissors" && HUMANSELECTION == "paper"),
+      ]
     ) {
       // Display the computer won
       alert("The computer won this round! The score is being incremented.");
-
       // Increment computerScore
       computerScore++;
+
+      alert(
+        "The score is currently... Player: " +
+          humanScore +
+          " and Computer: " +
+          computerScore
+      );
 
       // Play again or exit
 
       playRound();
     } else if (
-      (humanSelection == "rock" && computerSelection == "rock") ||
-      (humanSelection == "paper" && computerSelection == "paper") ||
-      (humanSelection == "scissors" && computerSelection == "scissors")
+      [
+        (HUMANSELECTION == "rock" && COMPUTERSELECTION == "rock") ||
+          (HUMANSELECTION == "paper" && COMPUTERSELECTION == "paper") ||
+          (HUMANSELECTION == "scissors" && COMPUTERSELECTION == "scissors"),
+      ]
     ) {
-      console.log("This round was a TIE.");
+      alert("This round was a TIE.");
+      alert(
+        "The score is currently... Player: " +
+          humanScore +
+          " and Computer: " +
+          computerScore
+      );
 
       // Play again or exit
 
@@ -76,11 +90,11 @@ function playRound() {
     } else {
       alert(
         "Final score was Player: " +
-          humanSelection +
+          humanScore +
           " and computer: " +
-          computerSelection
+          computerScore
       );
-      return;
+      // return;
     }
   }
 }
