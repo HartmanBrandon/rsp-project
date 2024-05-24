@@ -1,6 +1,8 @@
 playRound();
 
 let arr = ["Rock", "Paper", "Scissors"];
+const HUMANSELECTION = getHumanChoice();
+const COMPUTERSELECTION = getComputerChoice();
 
 function random(mn, mx) {
   return Math.random() * (mx - mn) + mn;
@@ -8,9 +10,7 @@ function random(mn, mx) {
 
 function getComputerChoice() {
   // This has been tested. It pulls the string name instead of index value.
-
   let computerSelection = arr[Math.floor(random(1, 4)) - 1];
-
   return computerSelection;
 }
 
@@ -18,21 +18,22 @@ function getComputerChoice() {
 
 function getHumanChoice() {
   let humanSelection = prompt("Rock paper or scissors? ").toLowerCase();
-
   return humanSelection;
 }
 
-function playRound(humanSelection, computerSelection) {
+function playRound() {
   let humanScore = 0;
-
   let computerScore = 0;
 
   let playGame = prompt("Would you like to play the game? Y/N");
 
   getHumanChoice();
+  alert("The player picked " + humanSelection);
 
   getComputerChoice();
+  alert("The computer picked " + computerSelection);
 
+  
   while (playGame == "Y" || playGame == "y") {
     if (
       (humanSelection == "rock" && computerSelection == "scissors") ||
@@ -40,11 +41,9 @@ function playRound(humanSelection, computerSelection) {
       (humanSelection == "scissors" && computerSelection == "paper")
     ) {
       // Display the human won
-
-      console.log("You won this round! The score is being incremented.");
+      alert("You won this round! The score is being incremented.");
 
       // Increment humanScore
-
       humanScore++;
 
       // Play again
@@ -56,13 +55,9 @@ function playRound(humanSelection, computerSelection) {
       (computerSelection == "scissors" && humanSelection == "paper")
     ) {
       // Display the computer won
-
-      console.log(
-        "The computer won this round! The score is being incremented."
-      );
+      alert("The computer won this round! The score is being incremented.");
 
       // Increment computerScore
-
       computerScore++;
 
       // Play again or exit
@@ -85,7 +80,6 @@ function playRound(humanSelection, computerSelection) {
           " and computer: " +
           computerSelection
       );
-
       return;
     }
   }
