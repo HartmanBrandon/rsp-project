@@ -1,13 +1,14 @@
 let arr = ["Rock", "Paper", "Scissors"];
+
 let humanScore = 0;
+
 let computerScore = 0;
+
 let HUMANSELECTION = "";
+
 let COMPUTERSELECTION = "";
 
 playRound();
-
-// I only win
-// Typing rock into Y or y
 
 function random(mn, mx) {
   return Math.random() * (mx - mn) + mn;
@@ -15,82 +16,88 @@ function random(mn, mx) {
 
 function getComputerChoice() {
   let computerSelection = arr[Math.floor(random(1, 4)) - 1];
+
   return computerSelection;
 }
 
 function getHumanChoice() {
   let humanSelection = prompt("Rock paper or scissors? ").toLowerCase();
+
   return humanSelection;
 }
 
 function playRound() {
   let playGame = prompt("Would you like to play the game? Y/N").toLowerCase();
-  while (playGame == "y") {
+
+  while (playGame === "y") {
     HUMANSELECTION = getHumanChoice();
+
     COMPUTERSELECTION = getComputerChoice();
-    if (
-      (HUMANSELECTION == "rock" && COMPUTERSELECTION == "scissors") ||
-      (HUMANSELECTION == "paper" && COMPUTERSELECTION == "rock") ||
-      (HUMANSELECTION == "scissors" && COMPUTERSELECTION == "paper")
-    ) {
-      // Display the human won
-      alert("You won this round! The score is being incremented.");
-      // Increment humanScore
-      humanScore++;
 
-      alert(
-        "The score is currently... Player: " +
-          humanScore +
-          " and Computer: " +
-          computerScore
-      );
+    if (HUMANSELECTION === COMPUTERSELECTION) {
+      alert("It's a TIE.");
 
-      // Play again
-      // playRound();
-    } else if (
-      (COMPUTERSELECTION == "rock" && HUMANSELECTION == "scissors") ||
-      (COMPUTERSELECTION == "paper" && HUMANSELECTION == "rock") ||
-      (COMPUTERSELECTION == "scissors" && HUMANSELECTION == "paper")
-    ) {
-      // Display the computer won
-      alert("The computer won this round! The score is being incremented.");
-      // Increment computerScore
-      computerScore++;
+      playGame = prompt("Would you like to play again? Y/N").toLowerCase();
+    }
 
-      alert(
-        "The score is currently... Player: " +
-          humanScore +
-          " and Computer: " +
-          computerScore
-      );
+    if (HUMANSELECTION === "rock") {
+      if (COMPUTERSELECTION === "scissors") {
+        alert("Human wins");
 
-      // Play again or exit
+        humanScore++;
 
-      // playRound();
-    } else if (
-      (HUMANSELECTION == "rock" && COMPUTERSELECTION == "rock") ||
-      (HUMANSELECTION == "paper" && COMPUTERSELECTION == "paper") ||
-      (HUMANSELECTION == "scissors" && COMPUTERSELECTION == "scissors")
-    ) {
-      alert("This round was a TIE.");
-      alert(
-        "The score is currently... Player: " +
-          humanScore +
-          " and Computer: " +
-          computerScore
-      );
+        alert("Human score is now: " + humanScore);
 
-      // Play again or exit
+        playGame = prompt("Would you like to play again? Y/N").toLowerCase();
+      } else {
+        alert("Computer wins");
 
-      // playRound();
-    } else {
-      alert(
-        "Final score was Player: " +
-          humanScore +
-          " and computer: " +
-          computerScore
-      );
-      // return;
+        computerScore++;
+
+        alert("Computer score is now: " + computerScore);
+
+        playGame = prompt("Would you like to play again? Y/N").toLowerCase();
+      }
+    }
+
+    if (HUMANSELECTION === "paper") {
+      if (COMPUTERSELECTION === "scissors") {
+        alert("Computer wins");
+
+        computerScore++;
+
+        alert("Computer score is now: " + computerScore);
+
+        playGame = prompt("Would you like to play again? Y/N").toLowerCase();
+      } else {
+        alert("Human wins");
+
+        humanScore++;
+
+        alert("Human score is now: " + humanScore);
+
+        playGame = prompt("Would you like to play again? Y/N").toLowerCase();
+      }
+    }
+
+    if (HUMANSELECTION === "scissors") {
+      if (COMPUTERSELECTION === "rock") {
+        alert("Computer wins");
+
+        computerScore++;
+
+        alert("Computer score is now: " + computerScore);
+
+        playGame = prompt("Would you like to play again? Y/N").toLowerCase();
+      } else {
+        alert("Human wins");
+
+        humanScore++;
+
+        alert("Human score is now: " + humanScore);
+
+        playGame = prompt("Would you like to play again? Y/N").toLowerCase();
+      }
     }
   }
 }
